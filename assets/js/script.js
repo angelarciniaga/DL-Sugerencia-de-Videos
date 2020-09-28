@@ -29,9 +29,9 @@ const sugerenciaVideos = (() => {
     }
 })();
 
-let videoMusica = `<iframe width="560" height="315" src="https://www.youtube.com/embed/qKp1f7Vn9dM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-let videoPelicula = `<iframe width="560" height="315" src="https://www.youtube.com/embed/LEQjVSk92SU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-let videoSerie = `<iframe width="560" height="315" src="https://www.youtube.com/embed/SqoNZwB0NCQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+let videoMusica = '<iframe width="560" height="315" src="https://www.youtube.com/embed/qKp1f7Vn9dM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+let videoPelicula = '<iframe width="560" height="315" src="https://www.youtube.com/embed/lMLz-Rag3no" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+let videoSerie = '<iframe width="560" height="315" src="https://www.youtube.com/embed/SqoNZwB0NCQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 
 class Video {
     constructor(videoMusica, videoPelicula, videoSerie){
@@ -53,7 +53,55 @@ class Video {
     }
 
     mostrarMusica() {
+        return sugerenciaVideos.musica1(this.videoMusica);
+    }
 
+    mostrarPelicula() {
+        return sugerenciaVideos.pelicula1(this.videoPelicula);
+    }
+
+    mostrarSerie() {
+        return sugerenciaVideos.serie1(this.videoSerie);
     }
 }
 
+class Musica extends Video {
+    constructor(videoMusica, videoPelicula, videoSerie) {
+        super(videoMusica, videoPelicula, videoSerie);
+    }
+
+    mostrarMusica() {
+        return sugerenciaVideos.musica1(this.videoMusica);
+    }
+}
+
+class Pelicula extends Video {
+    constructor(videoMusica, videoPelicula, videoSerie) {
+        super(videoMusica, videoPelicula, videoSerie);
+    }
+
+    mostrarPelicula() {
+        return sugerenciaVideos.pelicula1(this.videoPelicula);
+    }
+}
+
+class Serie extends Video {
+    constructor(videoMusica, videoPelicula, videoSerie) {
+        super(videoMusica, videoPelicula, videoSerie);
+    }
+
+    mostrarSerie() {
+        return sugerenciaVideos.serie1(this.videoSerie);
+    }
+}
+
+
+let musicaUnico = new Musica(videoMusica, 'videoPelicula', 'videoSerie');
+let peliculaUnica = new Pelicula('videoMusica', videoMusica, 'videoSerie');
+let serieUnica = new Serie('videoMusica', 'videoMusica', videoSerie);
+
+//let videos = new Video(videoMusica, videoMusica, videoSerie);
+
+musicaUnico.mostrarMusica();
+peliculaUnica.mostrarPelicula();
+serieUnica.mostrarSerie();
